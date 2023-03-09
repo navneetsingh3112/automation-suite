@@ -1,23 +1,20 @@
 #! /usr/bin/bash
-eclipse -nosplash -application org.eclipse.cdt.managedbuilder.core.headlessbuild -import {[uri:/]{$(pwd)}} 
-    -build {project_name | all} 
-    -cleanBuild {projec_name | all}
 echo "Enter User: " USER
-read io
+read user_account
 declare -A Repos
 Repos=( 
-        ["https://github.com/${io}/novopay-platform-initial-setup.git"]="develop" 
-        ["https://github.com/${io}/novopay-platform-lib.git"]="develop_hdfc"
-        ["https://github.com/${io}/novopay-platform-accounting-v2.git"]="develop" 
-        ["https://github.com/${io}/novopay-platform-actor.git"]="develop"
-        ["https://github.com/${io}/novopay-platform-api-gateway.git"]="develop" 
-        ["https://github.com/${io}/novopay-platform-masterdata-management.git"]="develop"
-        ["https://github.com/${io}/novopay-platform-authorization.git"]="develop" 
-        ["https://github.com/${io}/novopay-platform-approval.git"]="develop"
-        ["https://github.com/${io}/novopay-platform-notifications.git"]="develop"
+        ["https://github.com/${user_account}/novopay-platform-initial-setup.git"]="develop" 
+        ["https://github.com/${user_account}/novopay-platform-lib.git"]="develop_hdfc"
+        ["https://github.com/${user_account}/novopay-platform-accounting-v2.git"]="develop" 
+        ["https://github.com/${user_account}/novopay-platform-actor.git"]="develop"
+        ["https://github.com/${user_account}/novopay-platform-api-gateway.git"]="develop" 
+        ["https://github.com/${user_account}/novopay-platform-masterdata-management.git"]="develop"
+        ["https://github.com/${user_account}/novopay-platform-authorizatuser_accountn.git"]="develop" 
+        ["https://github.com/${user_account}/novopay-platform-approval.git"]="develop"
+        ["https://github.com/${user_account}/novopay-platform-notifications.git"]="develop"
     )
-mkdir git_repos1 #git_repos
-cd git_repos1
+mkdir git_repos
+cd git_repos
 j=0
 read -p "Enter preferred IDE: Eclipse/Intellij: " IDE
 for repo in "${!Repos[@]}"; 
@@ -28,6 +25,11 @@ for repo in "${!Repos[@]}";
         then
             sh gradlew cleanEclipse eclipse
             #gradle buildship for intellij or eclipse
+            eclipse -nosplash -application org.eclipse.cdt.managedbuilder.core.headlessbuild 
+            -import {[uri:/]{$(pwd)}} 
+            -build {project_name | all} 
+            -cleanBuild {projec_name | all}
+            
         elif [ "$IDE" == "Intellij" ]
         then 
             sh gradlew cleanIdea idea
