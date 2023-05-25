@@ -1,5 +1,5 @@
 #! /usr/bin/bash
-echo "Enter User: " USER
+echo "Enter Organisation name or your user name if its forked repo: " USER
 read username
 declare -A Repos
 Repos[0,0]="https://github.com/${username}/novopay-platform-lib.git"
