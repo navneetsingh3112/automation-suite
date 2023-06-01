@@ -62,6 +62,10 @@ Repos[14,0]="https://github.com/${username}/novopay-platform-payments.git"
 Repos[14,1]="mfi_integration_v3.12.0"
 Repos[14,2]="novopay-platform-payments"
 
+Repos[15,0]="https://github.com/${username}/novopay-sli-andriod.git"
+Repos[15,1]="mfi_integration_v3.12.0"
+Repos[15,2]="novopay-sli-andriod"
+
 
 read -p "Enter preferred IDE: Eclipse/Intellij: " IDE
 echo "Enter the path for the github repo in linux style. Eg: Windows style directory structure C:/Users/Admin/Desktop/git_repos needs to be replaced with linux /C/Users/Admin/Desktop/git_repos"
@@ -69,7 +73,7 @@ read git_repo_path
 echo "Enter path of for the ide workspace. To avoid workspace corruption please use different directories compare to github repos. The directory path needs to follow linux style. Eg: Windows style directory structure C:/Users/Admin/Desktop/eclipse_workspace needs to be replaced with linux /C/Users/Admin/Desktop/eclipse_workspace"
 read workspace
 j=0
-while [ $j -lt 14 ]
+while [ $j -lt 15 ]
 do
 	cd $git_repo_path
     git clone ${Repos[$j,0]} && cd "$(basename "$_" .git)"
