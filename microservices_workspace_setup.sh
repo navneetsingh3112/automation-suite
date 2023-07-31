@@ -74,7 +74,7 @@ do
 	cd $git_repo_path
     git clone ${Repos[$j,0]} && cd "$(basename "$_" .git)"
     git checkout ${Repos[$j,1]}
-	git remote add upstream "https://github.com/khoslalabs/${Repos[$j,2]}
+	git remote add upstream "https://github.com/khoslalabs/${Repos[$j,2]}"
 	
     if [ "$IDE" == "Eclipse" ]
     then

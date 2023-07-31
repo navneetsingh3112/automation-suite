@@ -55,7 +55,7 @@ while [ $j -lt 15 ]
 do
 	cd "${git_repo_path}/${Repos[$j,1]}"
 	git fetch upstream
-	for branch in $(git branch -r | grep -e mfi_integration -e mfi_release ); do
+	for branch in $(git branch -r | grep -e mfi_integration_v3.18.1 -e mfi_release_v3.18.1 ); do
 	  branch_name=${branch#origin/}
 	  branch_name=${branch_name#upstream/}
 	  echo $branch_name

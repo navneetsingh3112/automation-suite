@@ -1,0 +1,13 @@
+accounting
+actor
+gateway
+approval
+authorization
+batch
+dms
+masterdata
+notifications
+payments
+task
+los
+audit
