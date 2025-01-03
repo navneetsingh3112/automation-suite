@@ -92,7 +92,7 @@ do
 		fi
     elif [ "$IDE" == "Intellij" ]
     then 
-        if [ "${Repos[$j,1]}" != "novopay-platform-initial-setup" ]
+        if [ "${Repos[$j,1]}" != "novopay-platform-initial-setup" ] && [ "${Repos[$j,1]}" != "novopay-platform-webapp" ] && [ "${Repos[$j,1]}" != "novopay-sli-andriod" ]
 		then
 			sh gradlew cleanIdea idea
 			sh gradlew build -x test
