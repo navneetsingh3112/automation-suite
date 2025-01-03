@@ -54,8 +54,29 @@ Repos[13,1]="novopay-platform-task"
 Repos[14,0]="https://github.com/khoslalabs/novopay-platform-payments.git"
 Repos[14,1]="novopay-platform-payments"
 
+Repos[15,0]="https://github.com/khoslalabs/novopay-platform-webapp.git"
+Repos[15,1]="novopay-platform-webapp"
+
+Repos[16,0]="https://github.com/khoslalabs/trustt-platform-reporting.git"
+Repos[16,1]="trustt-platform-reporting"
+
+Repos[17,0]="https://github.com/khoslalabs/novopay-platform-bpmn.git"
+Repos[17,1]="novopay-platform-bpmn"
+
+Repos[18,0]="https://github.com/khoslalabs/trustt-platform-bre.git"
+Repos[18,1]="trustt-platform-bre"
+
+Repos[18,0]="https://github.com/khoslalabs/novopay-platform-consents.git"
+Repos[18,1]="novopay-platform-consents"
+
+Repos[19,0]="https://github.com/khoslalabs/novopay-platform-simulators.git"
+Repos[19,1]="novopay-platform-simulators"
+
+Repos[20,0]="https://github.com/khoslalabs/novopay-sli-andriod.git"
+Repos[20,1]="novopay-sli-andriod"
+
 j=0
-while [ $j -lt 15 ]
+while [ $j -lt 21 ]
 do
 	cd "${git_repo_path}/${Repos[$j,1]}"
 	git fetch upstream
