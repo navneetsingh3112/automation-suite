@@ -81,21 +81,17 @@ do
 	cd "${git_repo_path}/${Repos[$j,1]}"
 	echo "-------------------------"${Repos[$j,1]}
 	git fetch upstream
-	for branch in $(git branch -r | grep -e mfi_integration_v3.3.0 ); do
-	  branch_name=${branch#origin/}
-	  branch_name=${branch_name#upstream/}
-	  echo $branch_name
-	  if git rev-parse --quiet --verify "$branch_name" > /dev/null; then
-		echo "if for loop "
-		# Checkout branch and sync with upstream
-		git checkout "$branch_name"
-		git rebase "upstream/$branch_name"
-		git push origin "$branch_name"  
+	for branch in $(git branch -r | grep -w upstream/mfi_integration_v3.2.0 ); do
+	  branch_name=${branch#upstream/}
+	  if git rev-parse --quiet --verify "origin/$branch_name" > /dev/null; then
+      echo "branch exist in fork repo "$branch_name
+      git branch --set-upstream-to="origin/$branch_name"
+      git rebase "upstream/$branch_name"
+      git push origin "$branch_name"
 	  else
-		echo "else for loop "
-		# Create new branch and set it up to track upstream
-		git checkout --track "upstream/$branch_name"
-		git push --set-upstream origin "$branch_name"
+      echo "branch doesn't exist in fork repo "$branch_name
+      git checkout --track "upstream/$branch_name"
+      git push --set-upstream origin "$branch_name"
 	  fi
 	done	
     ((j++))
