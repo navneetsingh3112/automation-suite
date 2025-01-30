@@ -81,19 +81,19 @@ do
 	cd "${git_repo_path}/${Repos[$j,1]}"
 	echo "-------------------------"${Repos[$j,1]}
 	git fetch upstream
-	for branch in $(git branch -r | grep -w upstream/spring_upgrade_3.1.8.6.2 ); do
+	for branch in $(git branch -r | grep -w upstream/scascr_3.2.0 ); do
 		branch_name=${branch#upstream/}
 	  	if git rev-parse --quiet --verify "origin/$branch_name" > /dev/null; then
-        echo "branch exist in fork repo "$branch_name
-        git checkout --track "origin/$branch_name"
-        git branch --set-upstream-to="origin/$branch_name"
-        git rebase "upstream/$branch_name"
-        git push origin "$branch_name"
+            echo "branch exist in fork repo "$branch_name
+            git checkout --track "origin/$branch_name"
+            git branch --set-upstream-to="origin/$branch_name"
+            git rebase "upstream/$branch_name"
+            git push origin "$branch_name"
 	  	else
-        echo "branch doesn't exist in fork repo "$branch_name
-        git checkout --track "upstream/$branch_name"
-        git push --set-upstream origin "$branch_name"
+            echo "branch doesn't exist in fork repo "$branch_name
+            git checkout --track "upstream/$branch_name"
+            git push --set-upstream origin "$branch_name"
 	  	fi
-	done	
+	done
     ((j++))
 done
