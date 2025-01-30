@@ -70,35 +70,13 @@ Repos[20,0]="https://github.com/${username}/novopay-sli-andriod.git"
 Repos[20,1]="novopay-sli-andriod"
 
 
-read -p "Enter preferred IDE: Eclipse/Intellij: " IDE
 echo "Enter the path for the github repo in linux style. Eg: Windows style directory structure C:/Users/Admin/Desktop/git_repos needs to be replaced with linux /C/Users/Admin/Desktop/git_repos"
 read git_repo_path
-echo "Enter path of for the ide workspace. To avoid workspace corruption please use different directories compare to github repos. The directory path needs to follow linux style. Eg: Windows style directory structure C:/Users/Admin/Desktop/eclipse_workspace needs to be replaced with linux /C/Users/Admin/Desktop/eclipse_workspace"
-read workspace
 j=0
 while [ $j -lt 21 ]
 do
-	cd $git_repo_path
+    cd $git_repo_path
     git clone ${Repos[$j,0]} && cd "$(basename "$_" .git)"
-    git checkout mfi_integration_v3.3.0
-	git remote add upstream "https://github.com/khoslalabs/${Repos[$j,1]}"
-	
-    if [ "$IDE" == "Eclipse" ]
-    then
-		if [ "${Repos[$j,1]}" != "novopay-platform-initial-setup" ]
-		then
-			sh gradlew cleanEclipse eclipse
-			sh gradlew build -x test			
-		fi
-    elif [ "$IDE" == "Intellij" ]
-    then 
-        if [ "${Repos[$j,1]}" != "novopay-platform-initial-setup" ] && [ "${Repos[$j,1]}" != "novopay-platform-webapp" ] && [ "${Repos[$j,1]}" != "novopay-sli-andriod" ]
-		then
-			sh gradlew cleanIdea idea
-			sh gradlew build -x test
-		fi
-    else
-        echo "Enter Valid IDE."
-    fi
+    git remote add upstream "https://github.com/khoslalabs/${Repos[$j,1]}"
     ((j++))
 done
